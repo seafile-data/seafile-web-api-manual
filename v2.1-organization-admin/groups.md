@@ -2,13 +2,12 @@
 
 ## List Groups
 
-**GET** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/groups/>
+**GET** /api/v2.1/org/{org_id}/admin/groups/
 
 **Sample request**
 
 ```
-curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/groups/
-
+curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/groups/
 ```
 
 **Sample response**
@@ -29,18 +28,16 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
         }
     ]
 }
-
 ```
 
 ## Get Group
 
-**GET** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/groups/{group_id}/>
+**GET** /api/v2.1/org/{org_id}/admin/groups/{group_id}/
 
 **Sample request**
 
 ```
-curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/groups/157/
-
+curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/groups/157/
 ```
 
 **Sample response**
@@ -54,18 +51,16 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
     "creator_contact_email": "o2@o2.com",
     "id": 157
 }
-
 ```
 
 ## Delete Group
 
-**DELETE** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/groups/{group_id}/>
+**DELETE** /api/v2.1/org/{org_id}/admin/groups/{group_id}/
 
 **Sample request**
 
 ```
-curl -X DELETE -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/groups/158/
-
+curl -X DELETE -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/groups/158/
 ```
 
 **Sample response**
@@ -74,18 +69,16 @@ curl -X DELETE -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95
 {
     "success": true
 }
-
 ```
 
 ## List Group Libraries
 
-**GET** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/groups/{group_id}/libraries/>
+**GET** /api/v2.1/org/{org_id}/admin/groups/{group_id}/libraries/
 
 **Sample request**
 
 ```
-curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/groups/157/libraries/
-
+curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/groups/157/libraries/
 ```
 
 **Sample response**
@@ -107,18 +100,16 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
     "group_id": 157,
     "group_name": "g1"
 }
-
 ```
 
 ## Delete Group Library
 
-**DELETE** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/groups/{group_id}/libraries/{repo_id}/>
+**DELETE** /api/v2.1/org/{org_id}/admin/groups/{group_id}/libraries/{repo_id}/
 
 **Sample request**
 
 ```
-curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/groups/157/libraries/57421faf-a8ab-47f5-b5d7-00686f5cd8f2/
-
+curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/groups/157/libraries/57421faf-a8ab-47f5-b5d7-00686f5cd8f2/
 ```
 
 **Sample response**
@@ -127,12 +118,11 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 {
     "success": true
 }
-
 ```
 
 ## List Group Members
 
-**GET** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/groups/{group_id}/members/>
+**GET** /api/v2.1/org/{org_id}/admin/groups/{group_id}/members/
 
 Get all members of a group.
 
@@ -140,7 +130,6 @@ Get all members of a group.
 
 ```
 curl -H "Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/groups/64/members/
-
 ```
 
 **Sample response**
@@ -168,7 +157,6 @@ curl -H "Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd" -H 'Acce
         "email":"1@1.com"
     }
 ]
-
 ```
 
 **Errors**
@@ -180,13 +168,12 @@ curl -H "Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd" -H 'Acce
 
 Available for Seafile v6.0.8+
 
-**POST** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/groups/{group_id}/members/>
+**POST** /api/v2.1/org/{org_id}/admin/groups/{group_id}/members/
 
 **Sample request**
 
 ```
 curl -d "email=1@1.com&email=2@1.com" -H 'Authorization: Token 0eb24ce5db35a31f70171eca2f760f03f59fa09a' https://cloud.seafile.com/api/v2.1/org/12/admin/groups/65/members/
-
 ```
 
 **Sample response**
@@ -211,36 +198,32 @@ curl -d "email=1@1.com&email=2@1.com" -H 'Authorization: Token 0eb24ce5db35a31f7
         }
     ]
 }
-
 ```
 
 ## Delete Group Member
 
-**DELETE** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/groups/{group_id}/members/{email}/>
+**DELETE** /api/v2.1/org/{org_id}/admin/groups/{group_id}/members/{email}/
 
 **Sample request**
 
 ```
 curl -X DELETE -H 'Authorization: Token 444d2bbf1fc78ffbeedc4704c9f41e32d926ac94' https://cloud.seafile.com/api/v2.1/12/admin/groups/64/members/foo@foo.com/
-
 ```
 
 **Sample response**
 
 ```
 {"success":true}
-
 ```
 
 ## Update Group Member Role
 
-**PUT** <https://cloud.seafile.com/api/v2.1/org/s{org_id}/admin/groups/{group_id}/members/{email}>
+**PUT** /api/v2.1/org/s{org_id}/admin/groups/{group_id}/members/{email}
 
 **Sample request**
 
 ```
 curl -X PUT -d "is_admin=true" -H 'Authorization: Token 0eb24ce5db35a31f70171eca2f760f03f59fa09a' https://cloud.seafile.com/api/v2.1/12/admin/groups/65/members/3@1.com/
-
 ```
 
 **Sample response**
@@ -256,7 +239,4 @@ curl -X PUT -d "is_admin=true" -H 'Authorization: Token 0eb24ce5db35a31f70171eca
     "group_id":65,
     "email":"3@1.com"
 }
-
 ```
-
-

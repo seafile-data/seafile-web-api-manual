@@ -41,14 +41,17 @@ After getting the upload link, POST to this link for uploading files.
 
 **Request parameters**
 
-The parameters and file contents should be encoded in [Multipart/form-data format](https://tools.ietf.org/html/rfc7578) . Most http client libraries support it.
+The following parameters and file contents should be encoded in [Multipart/form-data format](https://tools.ietf.org/html/rfc7578) . Most http client libraries support it.
 
 * file: this field contains the contents to be uploaded.
-* parent_dir : path in your Seafile repo that you want to upload local file to.
+* parent_dir : path in your Seafile repo that you want to upload local file to. This path must be the same as the 'p' parameter you specified when getting the upload link.
 * relative_path: sub-folder of "parent_dir", if this sub-folder does not exist, Seafile will create it recursively. When you upload a folder, you should set this parameter to the uploaded folder's name.
+* replace: whether to overwrite file when it already exists. 1 for replace, 0 for not replace. If existing file is not replaced, the uploaded file will be renamed to the form "filename (1).txt".
+
+The following parameters are set in the URL:
+
 * ret-json: returns a json array including file info if set to `1`. If this parameter is not set, the file ids will be returned in a tab-separated string. New apps should set ret-json to 1.
 * need_idx_progress: Set to `true`  to ask the server to index file content asynchronously after upload is finished. So that the client doesn't have to wait until the file indexing is completed, which can take some time. The request returns a `task_id` to check file indexing progress.
-* replace: whether to overwrite file when it already exists. 1 for replace, 0 for not replace. If existing file is not replaced, the uploaded file will be renamed to the form "filename (1).txt".
 
 **Sample request without **`ret-json`** parameter**
 

@@ -2,13 +2,12 @@
 
 ## List File Access Logs
 
-**GET** <https://cloud.seafile.com/api/v2.1/org/admin/logs/file-access/>
+**GET** /api/v2.1/org/admin/logs/file-access/
 
 **Sample request**
 
 ```
-curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/admin/logs/file-access/
-
+curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/admin/logs/file-access/
 ```
 
 **Sample response**
@@ -34,18 +33,16 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
     "page": 1,
     "page_next": false
 }
-
 ```
 
 ## List File Update Logs
 
-**GET** <https://cloud.seafile.com/api/v2.1/org/admin/logs/file-update/>
+**GET** /api/v2.1/org/admin/logs/file-update/
 
 **Sample request**
 
 ```
-curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/admin/logs/file-update/
-
+curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/admin/logs/file-update/
 ```
 
 **Sample response**
@@ -74,13 +71,12 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 
 ## List Library Permission Logs
 
-**GET** <https://cloud.seafile.com/api/v2.1/org/admin/logs/repo-permission/>
+**GET** /api/v2.1/org/admin/logs/repo-permission/
 
 **Sample request**
 
 ```
-curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/admin/logs/repo-permission/
-
+curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/admin/logs/repo-permission/
 ```
 
 **Sample response**
@@ -104,4 +100,3 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
     "page_next": false
 }
 ```
-

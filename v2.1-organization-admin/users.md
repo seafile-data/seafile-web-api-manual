@@ -2,12 +2,12 @@
 
 ## List Users
 
-**GET** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/users/>
+**GET** /api/v2.1/org/{org_id}/admin/users/
 
 **Sample request**
 
 ```
-curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/users/
+curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/users/
 
 ```
 
@@ -39,12 +39,12 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 
 ## Add User
 
-**POST** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/users/>
+**POST** /api/v2.1/org/{org_id}/admin/users/
 
 **Sample request**
 
 ```
-curl -X POST -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/users/
+curl -X POST -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/users/
 
 ```
 
@@ -67,12 +67,12 @@ curl -X POST -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" 
 
 ## Get User
 
-**GET** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/users/{email}/>
+**GET** /api/v2.1/org/{org_id}/admin/users/{email}/
 
 **Sample request**
 
 ```
-curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/users/o2a@o2a.com/
+curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/users/o2a@o2a.com/
 
 ```
 
@@ -82,7 +82,7 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 {
     "quota_usage": 0,
     "name": "o2a",
-    "avatar_url": "http://127.0.0.1:8000/media/avatars/default.png",
+    "avatar_url": "https://cloud.seafile.com/media/avatars/default.png",
     "quota_total": -2,
     "contact_email": "o2a@o2a.com",
     "email": "o2a@o2a.com"
@@ -92,7 +92,7 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 
 ## Update User
 
-**PUT** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/users/{email}/>
+**PUT** /api/v2.1/org/{org_id}/admin/users/{email}/
 
 **Request Parameters**
 
@@ -106,7 +106,7 @@ choose one attribute to update
 **Sample request**
 
 ```
-curl -X PUT -d "name=o2aa" -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/users/o2a@o2a.com/
+curl -X PUT -d "name=o2aa" -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/users/o2a@o2a.com/
 
 ```
 
@@ -116,7 +116,7 @@ curl -X PUT -d "name=o2aa" -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d74
 {
     "quota_usage": 0,
     "name": "o2a",
-    "avatar_url": "http://127.0.0.1:8000/media/avatars/default.png",
+    "avatar_url": "https://cloud.seafile.com/media/avatars/default.png",
     "quota_total": -2,
     "contact_email": "o2a@o2a.com",
     "email": "o2a@o2a.com"
@@ -126,12 +126,12 @@ curl -X PUT -d "name=o2aa" -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d74
 
 ## Delete User
 
-**DELETE** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/users/{email}/>
+**DELETE** /api/v2.1/org/{org_id}/admin/users/{email}/
 
 **Sample request**
 
 ```
-curl -X DELETE -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/users/o2a@o2a.com/
+curl -X DELETE -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/users/o2a@o2a.com/
 
 ```
 
@@ -146,12 +146,12 @@ curl -X DELETE -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95
 
 ## Reset User Password
 
-**PUT** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/users/{email}/set-password/>
+**PUT** /api/v2.1/org/{org_id}/admin/users/{email}/set-password/
 
 **Sample request**
 
 ```
-curl -X PUT -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/users/o2a@o2a.com/set-password/
+curl -X PUT -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/users/o2a@o2a.com/set-password/
 
 ```
 
@@ -166,12 +166,12 @@ curl -X PUT -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -
 
 ## List User's Libraries
 
-**GET** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/users/{email}/repos>
+**GET** /api/v2.1/org/{org_id}/admin/users/{email}/repos/
 
 **Sample request**
 
 ```
-curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/users/o2@o2.com/repos/
+curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/users/o2@o2.com/repos/
 
 ```
 
@@ -200,12 +200,12 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 
 ## List Libraries Shared to a User
 
-**GET** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/users/{email}/beshared-repos>
+**GET** /api/v2.1/org/{org_id}/admin/users/{email}/beshared-repos/
 
 **Sample request**
 
 ```
-curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/users/o2b@o2b.com/beshared-repos/
+curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/users/o2b@o2b.com/beshared-repos/
 
 ```
 

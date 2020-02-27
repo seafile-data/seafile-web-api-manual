@@ -4,64 +4,16 @@
 
 ### List repo api tokens
 
-**GET** <http://127.0.0.1:8000/api/v2.1/repos/repo-id/repo-api-tokens/>
+**GET** /api/v2.1/repos/{repo_id}/repo-api-tokens/
+
+**Request parameters**
+
+* repo_id
 
 **Sample request**
 
 ```
-curl -X GET \
-  http://127.0.0.1:8000/api/v2.1/repos/5394b44b-6e41-42fc-90b7-49955547f4f0/repo-api-tokens/ \
-  -H 'authorization: token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
-  -H 'cache-control: no-cache' \
-  -H 'postman-token: 542c278d-3c6b-693e-1577-5768c82317b6'
-
-```
-
-**_Sample response_**
-
-```
-{
-    "repo_api_tokens": [
-        {
-            "repo_id": "5394b44b-6e41-42fc-90b7-49955547f4f0",
-            "app_name": "app-2",
-            "generated_by": "xiongchao.cheng@seafile.com",
-            "permission": "r",
-            "api_token": "2f43a8f52e1dc54f45b31640b62d3c349a2ecbe6"
-        },
-        {
-            "repo_id": "5394b44b-6e41-42fc-90b7-49955547f4f0",
-            "app_name": "app-1",
-            "generated_by": "xiongchao.cheng@seafile.com",
-            "permission": "rw",
-            "api_token": "1dcb4e95af32a6d5181b976e01b9b84e3b00f9b5"
-        }
-    ]
-}
-
-```
-
-**_Errors_**
-
-* 403 Permission denied.
-* 404 repo not found.
-* 500 Internal Server Error.
-
-### Generate repo api token
-
-**POST** <http://127.0.0.1:8000/api/v2.1/repos/repo-id/repo-api-tokens/>
-
-**Sample request**
-
-```
-curl -X POST \
-  http://127.0.0.1:8000/api/v2.1/repos/5394b44b-6e41-42fc-90b7-49955547f4f0/repo-api-tokens/ \
-  -H 'authorization: token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
-  -H 'cache-control: no-cache' \
-  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
-  -H 'postman-token: ec48947a-0815-620a-bd3d-eaf69ef3978a' \
-  -F permission=r \
-  -F app_name=time
+curl -H "Authorization: Token 12c8afe4ce2aaa632a4110a2e6bdf1ad68d04e5a" -H 'Accept: application/json; indent=4' 'https://cloud.seafile.com/api/v2.1/repos/b8e06f24-edfe-44a3-b63b-ad9ecc59e1eb/repo-api-tokens/'
 
 ```
 
@@ -69,11 +21,58 @@ curl -X POST \
 
 ```
 {
-    "repo_id": "5394b44b-6e41-42fc-90b7-49955547f4f0",
-    "app_name": "time",
-    "generated_by": "xiongchao.cheng@seafile.com",
+    "repo_api_tokens": [
+        {
+            "repo_id": "b8e06f24-edfe-44a3-b63b-ad9ecc59e1eb",
+            "app_name": "lian-test-2",
+            "generated_by": "imwhatiam123@gmail.com",
+            "permission": "r",
+            "api_token": "05cd0945e412a0d6e955c2fe29e84efc4825ede1"
+        },
+        {
+            "repo_id": "b8e06f24-edfe-44a3-b63b-ad9ecc59e1eb",
+            "app_name": "lian-test",
+            "generated_by": "imwhatiam123@gmail.com",
+            "permission": "rw",
+            "api_token": "fe6e0f511d7f11883fe95cea71020e698336220e"
+        }
+    ]
+}
+
+```
+
+**Errors**
+
+* 403 Permission denied.
+* 404 repo not found.
+* 500 Internal Server Error.
+
+### Generate repo api token
+
+**POST** /api/v2.1/repos/{repo_id}/repo-api-tokens/
+
+**Request parameters**
+
+* repo_id
+* permission
+* app_name
+
+**Sample request**
+
+```
+curl -d "permission=r&app_name=lian-test-3" -H "Authorization: Token 12c8afe4ce2aaa632a4110a2e6bdf1ad68d04e5a" -H 'Accept: application/json; indent=4' 'https://cloud.seafile.com/api/v2.1/repos/b8e06f24-edfe-44a3-b63b-ad9ecc59e1eb/repo-api-tokens/'
+
+```
+
+**Sample response**
+
+```
+{
+    "repo_id": "b8e06f24-edfe-44a3-b63b-ad9ecc59e1eb",
+    "app_name": "lian-test-3",
+    "generated_by": "imwhatiam123@gmail.com",
     "permission": "r",
-    "api_token": "12ddb3cbe80e7b421909cfe328ef2c8d04a99102"
+    "api_token": "5213de63c247636fcd1808de00d64d21acc54129"
 }
 
 ```
@@ -87,18 +86,18 @@ curl -X POST \
 
 ### Update repo api token
 
-**PUT** <http://127.0.0.1:8000/api/v2.1/repos/repo-id/repo-api-token/app-name>
+**PUT** /api/v2.1/repos/{repo_id}/repo-api-tokens/{app_name}/
+
+**Request parameters**
+
+* repo_id
+* permission
+* app_name
 
 **Sample request**
 
 ```
-curl -X PUT \
-  http://127.0.0.1:8000/api/v2.1/repos/5394b44b-6e41-42fc-90b7-49955547f4f0/repo-api-tokens/time/ \
-  -H 'authorization: token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
-  -H 'cache-control: no-cache' \
-  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
-  -H 'postman-token: f9016e4c-d927-e7ef-cae2-77f6740c8fe9' \
-  -F permission=r
+curl -X PUT -d "permission=rw" -H "Authorization: Token 12c8afe4ce2aaa632a4110a2e6bdf1ad68d04e5a" -H 'Accept: application/json; indent=4' 'https://cloud.seafile.com/api/v2.1/repos/b8e06f24-edfe-44a3-b63b-ad9ecc59e1eb/repo-api-tokens/lian-test-3/'
 
 ```
 
@@ -106,11 +105,11 @@ curl -X PUT \
 
 ```
 {
-    "repo_id": "5394b44b-6e41-42fc-90b7-49955547f4f0",
-    "app_name": "time",
-    "generated_by": "xiongchao.cheng@seafile.com",
-    "permission": "r",
-    "api_token": "12ddb3cbe80e7b421909cfe328ef2c8d04a99102"
+    "repo_id": "b8e06f24-edfe-44a3-b63b-ad9ecc59e1eb",
+    "app_name": "lian-test-3",
+    "generated_by": "imwhatiam123@gmail.com",
+    "permission": "rw",
+    "api_token": "5213de63c247636fcd1808de00d64d21acc54129"
 }
 
 ```
@@ -124,18 +123,17 @@ curl -X PUT \
 
 ### Delete repo api-token
 
-**DELETE** <http://127.0.0.1:8000/api/v2.1/repos/repo-id/repo-api-token/app-name>
+**DELETE** /api/v2.1/repos/{repo_id}/repo-api-tokens/{app_name}/
+
+**Request parameters**
+
+* repo_id
+* app_name
 
 **Sample request**
 
 ```
-curl -X DELETE \
-  http://127.0.0.1:8000/api/v2.1/repos/5394b44b-6e41-42fc-90b7-49955547f4f0/repo-api-tokens/time/ \
-  -H 'authorization: token 64b9ee55dc4ab902ff36763ef5c604a76d52875e' \
-  -H 'cache-control: no-cache' \
-  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
-  -H 'postman-token: f9016e4c-d927-e7ef-cae2-77f6740c8fe9' \
-  -F permission=r
+curl -X DELETE -H "Authorization: Token 12c8afe4ce2aaa632a4110a2e6bdf1ad68d04e5a" -H 'Accept: application/json; indent=4' 'https://cloud.seafile.com/api/v2.1/repos/b8e06f24-edfe-44a3-b63b-ad9ecc59e1eb/repo-api-tokens/lian-test-3/'
 
 ```
 
@@ -158,7 +156,7 @@ curl -X DELETE \
 
 ### List Items in Directory
 
-**GET** <http://127.0.0.1:8000/api/v2.1/via-repo-token/dir/>
+**GET** /api/v2.1/via-repo-token/dir/
 
 **Request** **parameters**
 
@@ -171,11 +169,7 @@ curl -X DELETE \
 **Sample request**
 
 ```
-curl -X GET \
-  'http://127.0.0.1:8000/api/v2.1/via-repo-token/dir/?recursive=1' \
-  -H 'authorization: token 2f43a8f52e1dc54f45b31640b62d3c349a2ecbe6' \
-  -H 'cache-control: no-cache' \
-  -H 'postman-token: 1ebd63cc-0155-959a-9852-e2463e9e3cab'
+curl -H "Authorization: Token fe6e0f511d7f11883fe95cea71020e698336220e" -H 'Accept: application/json; indent=4' 'https://cloud.seafile.com/api/v2.1/via-repo-token/dir/'
 
 ```
 
@@ -183,27 +177,55 @@ curl -X GET \
 
 ```
 {
+    "user_perm": "rw",
+    "dir_id": "dc561abe027728f36ea6d02b7b4439ba1aba1b3b",
     "dirent_list": [
         {
             "type": "dir",
+            "id": "04f3fb2b992c7aa1eb897a4e2c46b3212def1028",
+            "name": "123 in lian test",
+            "mtime": 1575514722,
+            "permission": "rw",
             "parent_dir": "/",
-            "id": "0000000000000000000000000000000000000000",
-            "name": "new-first",
-            "mtime": 1572583204
+            "starred": false
         },
         {
             "type": "file",
-            "modifier_email": null,
-            "size": 0,
-            "is_locked": false,
-            "lock_owner": null,
-            "lock_time": 0,
-            "parent_dir": "/",
             "id": "0000000000000000000000000000000000000000",
-            "name": "first-changed.md",
-            "mtime": 1572516254,
-            "modifier_contact_email": "",
-            "modifier_name": ""
+            "name": "123.md",
+            "mtime": 1576548579,
+            "permission": "rw",
+            "parent_dir": "/",
+            "size": 0,
+            "modifier_email": "imwhatiam123@gmail.com",
+            "modifier_name": "lian",
+            "modifier_contact_email": "imwhatiam123@gmail.com",
+            "is_locked": false,
+            "lock_time": 0,
+            "lock_owner": "",
+            "lock_owner_name": "",
+            "lock_owner_contact_email": "",
+            "locked_by_me": false,
+            "starred": false
+        },
+        {
+            "type": "file",
+            "id": "5a82a5c0e2263451c219bbec36dc285fdede4312",
+            "name": "123.xlsx",
+            "mtime": 1574744620,
+            "permission": "rw",
+            "parent_dir": "/",
+            "size": 9836,
+            "modifier_email": "imwhatiam123@gmail.com",
+            "modifier_name": "lian",
+            "modifier_contact_email": "imwhatiam123@gmail.com",
+            "is_locked": false,
+            "lock_time": 0,
+            "lock_owner": "",
+            "lock_owner_name": "",
+            "lock_owner_contact_email": "",
+            "locked_by_me": false,
+            "starred": false
         }
     ]
 }
@@ -218,7 +240,7 @@ curl -X GET \
 
 ### Create New Directory
 
-**POST** <http://127.0.0.1:8000/api/v2.1/via-repo-token/dir/>
+**POST** /api/v2.1/via-repo-token/dir/
 
 **Request** **parameters**
 
@@ -228,13 +250,7 @@ curl -X GET \
 **Sample request**
 
 ```
-curl -X POST \
-  'http://127.0.0.1:8000/api/v2.1/via-repo-token/dir/?path=%2Fapi-token-dirs-1' \
-  -H 'authorization: token 1dcb4e95af32a6d5181b976e01b9b84e3b00f9b5' \
-  -H 'cache-control: no-cache' \
-  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
-  -H 'postman-token: 5c41e654-2c38-9beb-b44a-ec4152c66ac8' \
-  -F operation=mkdir
+curl -d "operation=mkdir" -H "Authorization: Token fe6e0f511d7f11883fe95cea71020e698336220e" -H 'Accept: application/json; indent=4' 'https://cloud.seafile.com/api/v2.1/via-repo-token/dir/?path=/new-dir'
 
 ```
 
@@ -243,11 +259,11 @@ curl -X POST \
 ```
 {
     "type": "dir",
-    "repo_id": "5394b44b-6e41-42fc-90b7-49955547f4f0",
+    "repo_id": "b8e06f24-edfe-44a3-b63b-ad9ecc59e1eb",
     "parent_dir": "/",
-    "obj_name": "api-token-dirs-1",
+    "obj_name": "new-dir",
     "obj_id": "0000000000000000000000000000000000000000",
-    "mtime": "2019-11-02T15:20:48+00:00"
+    "mtime": "2020-02-24T15:50:27+08:00"
 }
 
 ```
@@ -261,7 +277,7 @@ curl -X POST \
 
 ### Get Upload Link
 
-**GET** <http://127.0.0.1:8000/api/v2.1/via-repo-token/upload-link/>
+**GET** /api/v2.1/via-repo-token/upload-link/
 
 **Request** **parameters**
 
@@ -270,18 +286,14 @@ curl -X POST \
 **Sample request**
 
 ```
-curl -X GET \
-  http://127.0.0.1:8000/api/v2.1/via-repo-token/upload-link/ \
-  -H 'authorization: token 1dcb4e95af32a6d5181b976e01b9b84e3b00f9b5' \
-  -H 'cache-control: no-cache' \
-  -H 'postman-token: 16ac85c6-8dcc-582d-1f72-824537b326c0'
+curl -H "Authorization: Token fe6e0f511d7f11883fe95cea71020e698336220e" -H 'Accept: application/json; indent=4' 'https://cloud.seafile.com/api/v2.1/via-repo-token/upload-link/?path=/new-dir'
 
 ```
 
 **Sample response**
 
 ```
-"http://127.0.0.1:8082/upload-api/abde41ee-9d4b-4474-a0b0-23aedc68feda"
+"https://cloud.seafile.com/seafhttp/upload-api/62fdd868-ee80-4acb-b1ce-362de3fc0a63"
 
 ```
 
@@ -293,7 +305,7 @@ curl -X GET \
 
 ### Get File Download Link
 
-**GET** <http://127.0.0.1:8000/api/v2.1/via-repo-token/download-link/>
+**GET** /api/v2.1/via-repo-token/download-link/
 
 **Request** **parameters**
 
@@ -302,18 +314,14 @@ curl -X GET \
 **Sample request**
 
 ```
-curl -X GET \
-  'http://127.0.0.1:8000/api/v2.1/via-repo-token/download-link/?path=new-first' \
-  -H 'authorization: token 2f43a8f52e1dc54f45b31640b62d3c349a2ecbe6' \
-  -H 'cache-control: no-cache' \
-  -H 'postman-token: bb21dc20-c026-4870-ce5b-ede8372034fe'
+curl -H "Authorization: Token fe6e0f511d7f11883fe95cea71020e698336220e" -H 'Accept: application/json; indent=4' 'https://cloud.seafile.com/api/v2.1/via-repo-token/download-link/?path=/123.md'
 
 ```
 
 **Sample response**
 
 ```
-"http://127.0.0.1:8082/files/191a98b0-b998-423e-a17a-8c6b08b0791c/new-first"
+"https://cloud.seafile.com/seafhttp/files/28ed9480-f48e-4734-b972-2e0d27167dd5/123.md"
 
 ```
 
@@ -325,16 +333,12 @@ curl -X GET \
 
 ### Get Repo Info
 
-**GET** <http://127.0.0.1:8000/api/v2.1/via-repo-token/repo-info/>
+**GET** /api/v2.1/via-repo-token/repo-info/
 
 **Sample request**
 
 ```
-curl -X GET \
-  http://127.0.0.1:8000/api/v2.1/via-repo-token/repo-info	/ \
-  -H 'authorization: token 90604e26da9cec1610c4a39840eb810f3824258d' \
-  -H 'cache-control: no-cache' \
-  -H 'postman-token: 7cd2a2ea-31e8-1a40-3055-2d15e44d833f'
+curl -H "Authorization: Token fe6e0f511d7f11883fe95cea71020e698336220e" -H 'Accept: application/json; indent=4' 'https://cloud.seafile.com/api/v2.1/via-repo-token/repo-info/'
 
 ```
 
@@ -342,8 +346,8 @@ curl -X GET \
 
 ```
 {
-    "repo_id": "9d67d0e5-0c84-4b5a-a876-365481a94791",
-    "repo_name": "Personal library"
+    "repo_id": "b8e06f24-edfe-44a3-b63b-ad9ecc59e1eb",
+    "repo_name": "lian-test"
 }
 
 ```

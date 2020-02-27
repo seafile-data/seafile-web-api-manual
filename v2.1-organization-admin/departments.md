@@ -2,12 +2,13 @@
 
 ## List top level departments
 
-**GET** <http://cloud.seafile.com/api/v2.1/org/{org_id}/admin/address-book/groups/>
+**GET** /api/v2.1/org/{org_id}/admin/address-book/groups/
 
 **Sample request**
 
 ```
-curl -H 'Authorization: Token 2bac21cab9eb0c4baac10d1e6fc3cf590f0dcf17' -H 'Accept: application/json; charset=utf-8; indent=4' http://192.168.1.113:8000/api/v2.1/org/12/admin/address-book/groups/
+curl -H 'Authorization: Token 2bac21cab9eb0c4baac10d1e6fc3cf590f0dcf17' -H 'Accept: application/json; charset=utf-8; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/address-book/groups/
+
 ```
 
 **Sample response**
@@ -46,7 +47,7 @@ curl -H 'Authorization: Token 2bac21cab9eb0c4baac10d1e6fc3cf590f0dcf17' -H 'Acce
 
 ## List groups and members in a department
 
-**GET** <http://cloud.seafile.com/api/v2.1/org/{org_id}/admin/address-book/groups/{group_id}/?return_ancestors=true>
+**GET** /api/v2.1/org/{org_id}/admin/address-book/groups/{group_id}/
 
 **Request parameters**
 
@@ -55,7 +56,7 @@ curl -H 'Authorization: Token 2bac21cab9eb0c4baac10d1e6fc3cf590f0dcf17' -H 'Acce
 **Sample request**
 
 ```
-curl -H 'Authorization: Token 2bac21cab9eb0c4baac10d1e6fc3cf590f0dcf17' -H 'Accept: application/json; charset=utf-8; indent=4' http://192.168.1.113:8000/api/v2.1/org/12/admin/address-book/groups/172/?return_ancestors=true
+curl -H 'Authorization: Token 2bac21cab9eb0c4baac10d1e6fc3cf590f0dcf17' -H 'Accept: application/json; charset=utf-8; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/address-book/groups/172/?return_ancestors=true
 
 ```
 
@@ -70,7 +71,7 @@ curl -H 'Authorization: Token 2bac21cab9eb0c4baac10d1e6fc3cf590f0dcf17' -H 'Acce
   "members": [
     {
       "login_id": "",
-      "avatar_url": "http://192.168.1.113:8000/image-view\/avatars\/9\/3\/45638f87b4642ce4820dbe65e3438d\/resized\/80\/dfad850ea93d405f6e6cf51a9f1e36bf_GrrNVeZ.png",
+      "avatar_url": "https://cloud.seafile.com/image-view\/avatars\/9\/3\/45638f87b4642ce4820dbe65e3438d\/resized\/80\/dfad850ea93d405f6e6cf51a9f1e36bf_GrrNVeZ.png",
       "contact_email": "xxx@gmail.com",
       "name": "xxx",
       "is_admin": true,
@@ -108,7 +109,7 @@ curl -H 'Authorization: Token 2bac21cab9eb0c4baac10d1e6fc3cf590f0dcf17' -H 'Acce
 
 ## Add a department
 
-**POST** <http://cloud.seafile.com/api/v2.1/org/{org_id}/admin/address-book/groups/>
+**POST** /api/v2.1/org/{org_id}/admin/address-book/groups/
 
 **Request parameters**
 
@@ -119,7 +120,7 @@ curl -H 'Authorization: Token 2bac21cab9eb0c4baac10d1e6fc3cf590f0dcf17' -H 'Acce
 **Sample request**
 
 ```
-curl -v -d "group_name=xxx&group_owner=system admin" -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' -H 'Accept: application/json; charset=utf-8; indent=4' http://192.168.1.113:8000/api/v2.1/org/12/admin/address-book/groups/
+curl -v -d "group_name=xxx&group_owner=system admin" -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' -H 'Accept: application/json; charset=utf-8; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/address-book/groups/
 
 ```
 
@@ -143,12 +144,12 @@ curl -v -d "group_name=xxx&group_owner=system admin" -H 'Authorization: Token f2
 
 ## Delete a department
 
-**DELETE** <http://cloud.seafile.com/api/v2.1/org/{org_id}/admin/address-book/groups/{group_id}/>
+**DELETE** /api/v2.1/org/{org_id}/admin/address-book/groups/{group_id}/
 
 **Sample request**
 
 ```
-curl -X DELETE -v  -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' -H 'Accept: application/json; charset=utf-8; indent=4' http://192.168.1.113:8000/api/v2.1/org/12/admin/address-book/groups/176/
+curl -X DELETE -v  -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' -H 'Accept: application/json; charset=utf-8; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/address-book/groups/176/
 
 ```
 
@@ -163,7 +164,7 @@ curl -X DELETE -v  -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b4
 
 Available for Seafile v6.3
 
-**PUT** <https://cloud.seafile.com/api/v2.1/admin/groups/{group_id}/>
+**PUT** /api/v2.1/admin/groups/{group_id}/
 
 **Request parameters**
 
