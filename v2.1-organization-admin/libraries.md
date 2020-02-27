@@ -2,13 +2,12 @@
 
 ## List Libraries
 
-**GET** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/repos/>
+**GET** /api/v2.1/org/{org_id}/admin/repos/
 
 **Sample request**
 
 ```
-curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/repos/
-
+curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/repos/
 ```
 
 **Sample response**
@@ -33,7 +32,7 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 
 ## Transfer Library
 
-**PUT** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/repos/{repo_id}/>
+**PUT** /api/v2.1/org/{org_id}/admin/repos/{repo_id}/
 
 **Request Parameters**
 
@@ -42,8 +41,7 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 **Sample request**
 
 ```
-curl -X PUT -d "email=o2a@o2a.com" -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/repos/f707b2ee-241f-4322-95c0-4135b47e6a85/
-
+curl -X PUT -d "email=o2a@o2a.com" -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/repos/f707b2ee-241f-4322-95c0-4135b47e6a85/
 ```
 
 **Sample response**
@@ -63,13 +61,12 @@ curl -X PUT -d "email=o2a@o2a.com" -H "Authorization: Token 3f1e23157c3a1fd740e9
 
 ## Delete Library
 
-**DELETE** <https://cloud.seafile.com/api/v2.1/org/{org_id}/admin/repos/{repo_id}/>
+**DELETE** /api/v2.1/org/{org_id}/admin/repos/{repo_id}/
 
 **Sample request**
 
 ```
-curl -X DELETE -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/12/admin/repos/f707b2ee-241f-4322-95c0-4135b47e6a85/
-
+curl -X DELETE -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/12/admin/repos/f707b2ee-241f-4322-95c0-4135b47e6a85/
 ```
 
 **Sample response**

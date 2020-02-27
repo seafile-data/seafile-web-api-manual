@@ -2,12 +2,12 @@
 
 ## Get Links
 
-**GET** <https://cloud.seafile.com/api/v2.1/org/admin/links/>
+**GET** /api/v2.1/org/admin/links/
 
 **Sample request**
 
 ```
-curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/admin/links/
+curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/admin/links/
 ```
 
 **Sample response**
@@ -33,12 +33,12 @@ curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Acce
 
 ## Delete Link
 
-**GET** <https://cloud.seafile.com/api/v2.1/org/admin/links/{token}/>
+**GET** /api/v2.1/org/admin/links/{token}/
 
 **Sample request**
 
 ```
-curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/api/v2.1/org/admin/links/e367afdcd33444c2912a/
+curl -H "Authorization: Token 3f1e23157c3a1fd740e9dc1c5d748929fe319b95" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/org/admin/links/e367afdcd33444c2912a/
 ```
 
 **Sample response**
