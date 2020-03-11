@@ -710,4 +710,91 @@ curl -H "Authorization: Token f97d5b77cee9438451b92d29155f61c5abce3c4f" -H 'Acce
 * 404 Library not found.
 * 500 Internal Server Error
 
+## Library Commit
+
+### Get Library Commit Info
+
+**GET** <https://cloud.seafile.com/api/v2.1/repos/{repo_id}/commits/{commit_id}>
+
+**Request parameters**
+
+* `repo_id`
+* `commit_id`
+
+**Sample request**
+
+```
+curl -H 'Authorization:Token 825d6877dc3474d952b1f5b0654aeaeb90c48281' -H 'Accept: application/json; indent=4' "https://cloud.seafile.com/api/v2.1/repos/8756ca9d-e3ed-44da-b43e-1bfd165b2377/commits/28c15cca4a8dbd5135fbe3ae75c3df7f5f355484/"
+
+```
+
+**Sample response**
+
+```
+{
+    "commit_info": {
+        "description": "Added or modified \"1.md\" and 2 more files.\nDeleted \"default.jpeg\".\nRenamed \"123.umind\" and 1 more files.\nAdded \"789\" and 1 more directories.\nRemoved directory \"456\".\n",
+        "creator_name": "lian-name",
+        "creator_email": "lian@lian.com",
+        "device_name": "lian mac pro work",
+        "time": "2020-03-11T10:17:03+08:00",
+        "creator_contact_email": "lian@lian.com"
+    },
+    "commit_diffs": [
+        {
+            "op_type": "renamed",
+            "path": "/123/123.umind",
+            "new_path": "/123/123.umind copy"
+        },
+        {
+            "op_type": "renamed",
+            "path": "/d0efd88ejw1f6vqsjmjh9j20c846i4i6.jpg",
+            "new_path": "/123.jpg"
+        },
+        {
+            "op_type": "modified",
+            "path": "/123/1.md",
+            "new_path": ""
+        },
+        {
+            "op_type": "deldir",
+            "path": "/123/456",
+            "new_path": ""
+        },
+        {
+            "op_type": "newdir",
+            "path": "/123/789",
+            "new_path": ""
+        },
+        {
+            "op_type": "newdir",
+            "path": "/abd",
+            "new_path": ""
+        },
+        {
+            "op_type": "removed",
+            "path": "/default.jpeg",
+            "new_path": ""
+        },
+        {
+            "op_type": "new",
+            "path": "/departments copy.md",
+            "new_path": ""
+        },
+        {
+            "op_type": "modified",
+            "path": "/info.md",
+            "new_path": ""
+        }
+    ]
+}
+
+```
+
+**Errors**
+
+* 404 Library not found.
+* 404 Commit not found.
+* 403 Permission denied.
+
 
