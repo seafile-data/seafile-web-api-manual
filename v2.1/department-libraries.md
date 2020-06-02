@@ -4,7 +4,7 @@ The department library is also called group owned library.
 
 ## Add Group Owned Library
 
-**POST** http://192.168.1.113:8000/api/v2.1/groups/{group_id}/group-owned-libraries/
+**POST** <http://192.168.1.113:8000/api/v2.1/groups/{group_id}/group-owned-libraries/>
 
 **Request parameters**
 
@@ -17,6 +17,7 @@ The department library is also called group owned library.
 
 ```
 curl -d "repo_name=group-owned-repo-4&permission=r" -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' "http://192.168.1.113:8000/api/v2.1/groups/53/group-owned-libraries/"
+
 ```
 
 **sample response**
@@ -31,6 +32,7 @@ curl -d "repo_name=group-owned-repo-4&permission=r" -H 'Authorization: Token f22
     "repo_name": "group-owned-repo-4",
     "size": 0
 }
+
 ```
 
 **Errors**
@@ -43,7 +45,7 @@ curl -d "repo_name=group-owned-repo-4&permission=r" -H 'Authorization: Token f22
 
 ## Delete Group Owned Library
 
-**DELETE** http://192.168.1.113:8000/api/v2.1/groups/{group_id}/group-owned-libraries/{repo_id}/
+**DELETE** <http://192.168.1.113:8000/api/v2.1/groups/{group_id}/group-owned-libraries/{repo_id}/>
 
 **Request parameters**
 
@@ -54,12 +56,14 @@ curl -d "repo_name=group-owned-repo-4&permission=r" -H 'Authorization: Token f22
 
 ```
 curl -X DELETE -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' "http://192.168.1.113:8000/api/v2.1/groups/53/group-owned-libraries/9bc59af9-265e-4110-a0e2-619450a5cb35/"
+
 ```
 
 **sample response**
 
 ```
 {"success":true}
+
 ```
 
 **Errors**
@@ -70,7 +74,7 @@ curl -X DELETE -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd
 
 #### <a id="get-group-owned-library-user-share-info"></a>Get Group Owned Library User Share Info
 
-**GET** http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/user-share/
+**GET** <http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/user-share/>
 
 **Request parameters**
 
@@ -80,6 +84,7 @@ curl -X DELETE -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd
 
 ```
 curl -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Accept: application/json; charset=utf-8; indent=4' "http://192.168.1.113:8000/api/v2.1/group-owned-libraries/4902dcc7-29be-4020-81e9-4e512f97db1e/user-share/"
+
 ```
 
 **sample response**
@@ -105,6 +110,7 @@ curl -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Acce
         "user_contact_email": "10@10.com"
     }
 ]
+
 ```
 
 **Errors**
@@ -114,18 +120,21 @@ curl -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Acce
 
 ## Share Group Owned Library to User
 
-**POST** http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/user-share/
+**POST** <http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/user-share/>
 
 **Request parameters**
 
 * `repo_id`
 * `permission`, `r` or `rw`.
 * `username`
+* `path`
 
 **Sample request**
 
 ```
-curl -d "permission=r&username=1@1.com&username=2@1.com" -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Accept: application/json; charset=utf-8; indent=4' "http://192.168.1.113:8000/api/v2.1/group-owned-libraries/4902dcc7-29be-4020-81e9-4e512f97db1e/user-share/"
+curl -d "permission=r&username=foo@foo.com&username=tmp@tmp.com&path=/123" -H 'Authorization: Token 
+5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Accept: application/json; charset=utf-8; indent=4' "http://192.168.1.113:8000/api/v2.1/group-owned-libraries/9751f807-31d5-45c6-947f-3abf30fd0a88/user-share/"
+
 ```
 
 **sample response**
@@ -134,19 +143,20 @@ curl -d "permission=r&username=1@1.com&username=2@1.com" -H 'Authorization: Toke
 {
     "failed": [
         {
-            "email": "2@1.com",
-            "error_msg": "User 2@1.com not found."
+            "email": "tmp@tmp.com",
+            "error_msg": "User tmp@tmp.com not found."
         }
     ],
     "success": [
         {
-            "permission": "r",
-            "user_name": "1",
-            "user_email": "1@1.com",
-            "user_contact_email": "1@1.com"
+            "user_email": "foo@foo.com",
+            "user_name": "foo",
+            "user_contact_email": "foo@foo.com",
+            "permission": "r"
         }
     ]
 }
+
 ```
 
 **Errors**
@@ -157,7 +167,7 @@ curl -d "permission=r&username=1@1.com&username=2@1.com" -H 'Authorization: Toke
 
 ## Modify Group Owned Library User Share Permission
 
-**PUT** http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/user-share/
+**PUT** <http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/user-share/>
 
 **Request parameters**
 
@@ -169,6 +179,7 @@ curl -d "permission=r&username=1@1.com&username=2@1.com" -H 'Authorization: Toke
 
 ```
 curl -X PUT -d "permission=rw&username=1@1.com" -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Accept: application/json; charset=utf-8; indent=4' "http://192.168.1.113:8000/api/v2.1/group-owned-libraries/4902dcc7-29be-4020-81e9-4e512f97db1e/user-share/"
+
 ```
 
 **sample response**
@@ -177,6 +188,7 @@ curl -X PUT -d "permission=rw&username=1@1.com" -H 'Authorization: Token 5eba8c2
 {
     "success": true
 }
+
 ```
 
 **Errors**
@@ -187,7 +199,7 @@ curl -X PUT -d "permission=rw&username=1@1.com" -H 'Authorization: Token 5eba8c2
 
 ## Delete Group Owned Library User Share
 
-**DELETE** http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/user-share/
+**DELETE** <http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/user-share/>
 
 **Request parameters**
 
@@ -198,6 +210,7 @@ curl -X PUT -d "permission=rw&username=1@1.com" -H 'Authorization: Token 5eba8c2
 
 ```
 curl -X DELETE -d "username=1@1.com" -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Accept: application/json; charset=utf-8; indent=4' "http://192.168.1.113:8000/api/v2.1/group-owned-libraries/4902dcc7-29be-4020-81e9-4e512f97db1e/user-share/"
+
 ```
 
 **sample response**
@@ -206,6 +219,7 @@ curl -X DELETE -d "username=1@1.com" -H 'Authorization: Token 5eba8c2f983404e33b
 {
     "success": true
 }
+
 ```
 
 **Errors**
@@ -215,7 +229,7 @@ curl -X DELETE -d "username=1@1.com" -H 'Authorization: Token 5eba8c2f983404e33b
 
 ## Get Group Owned Library Group Share Info
 
-**GET** http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/group-share/
+**GET** <http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/group-share/>
 
 **Request parameters**
 
@@ -225,6 +239,7 @@ curl -X DELETE -d "username=1@1.com" -H 'Authorization: Token 5eba8c2f983404e33b
 
 ```
 curl -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Accept: application/json; charset=utf-8; indent=4' "http://192.168.1.113:8000/api/v2.1/group-owned-libraries/4902dcc7-29be-4020-81e9-4e512f97db1e/group-share/"
+
 ```
 
 **sample response**
@@ -242,6 +257,7 @@ curl -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Acce
         "group_name": "group-of-lian"
     }
 ]
+
 ```
 
 **Errors**
@@ -251,18 +267,20 @@ curl -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Acce
 
 ## Share Group Owned Library to Group
 
-**POST** http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/group-share/
+**POST** <http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/group-share/>
 
 **Request parameters**
 
 * `repo_id`
 * `permission`, `r` or `rw`.
 * `group_id`
+* `path`
 
 **Sample request**
 
 ```
-curl -d "permission=r&group_id=89&group_id=71&group_id=70" -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Accept: application/json; charset=utf-8; indent=4' "http://192.168.1.113:8000/api/v2.1/group-owned-libraries/4902dcc7-29be-4020-81e9-4e512f97db1e/group-share/"
+curl -d "permission=r&group_id=89&group_id=71&group_id=70&path=/123" -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Accept: application/json; charset=utf-8; indent=4' "http://192.168.1.113:8000/api/v2.1/group-owned-libraries/4902dcc7-29be-4020-81e9-4e512f97db1e/group-share/"
+
 ```
 
 **sample response**
@@ -286,6 +304,7 @@ curl -d "permission=r&group_id=89&group_id=71&group_id=70" -H 'Authorization: To
         }
     ]
 }
+
 ```
 
 **Errors**
@@ -296,7 +315,7 @@ curl -d "permission=r&group_id=89&group_id=71&group_id=70" -H 'Authorization: To
 
 ## Modify Group Owned Library Group Share Permission
 
-**PUT** http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/group-share/
+**PUT** <http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/group-share/>
 
 **Request parameters**
 
@@ -308,6 +327,7 @@ curl -d "permission=r&group_id=89&group_id=71&group_id=70" -H 'Authorization: To
 
 ```
 curl -X PUT -d "permission=rw&group_id=70" -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Accept: application/json; charset=utf-8; indent=4' "http://192.168.1.113:8000/api/v2.1/group-owned-libraries/4902dcc7-29be-4020-81e9-4e512f97db1e/group-share/"
+
 ```
 
 **sample response**
@@ -316,6 +336,7 @@ curl -X PUT -d "permission=rw&group_id=70" -H 'Authorization: Token 5eba8c2f9834
 {
     "success": true
 }
+
 ```
 
 **Errors**
@@ -326,7 +347,7 @@ curl -X PUT -d "permission=rw&group_id=70" -H 'Authorization: Token 5eba8c2f9834
 
 ## Delete Group Owned Library Group Share
 
-**DELETE** http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/group-share/
+**DELETE** <http://192.168.1.113:8000/api/v2.1/group-owned-libraries/{repo_id}/group-share/>
 
 **Request parameters**
 
@@ -337,6 +358,7 @@ curl -X PUT -d "permission=rw&group_id=70" -H 'Authorization: Token 5eba8c2f9834
 
 ```
 curl -X DELETE -d "group_id=71" -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Accept: application/json; charset=utf-8; indent=4' "http://192.168.1.113:8000/api/v2.1/group-owned-libraries/4902dcc7-29be-4020-81e9-4e512f97db1e/group-share/"
+
 ```
 
 **sample response**
@@ -345,6 +367,7 @@ curl -X DELETE -d "group_id=71" -H 'Authorization: Token 5eba8c2f983404e33b140b1
 {
     "success": true
 }
+
 ```
 
 **Errors**
@@ -354,7 +377,7 @@ curl -X DELETE -d "group_id=71" -H 'Authorization: Token 5eba8c2f983404e33b140b1
 
 ## Modify Group Owned Library Sub-Folder Permission
 
-**PUT** http://192.168.1.113:8000/api/v2.1/groups/{group_id}/group-owned-libraries/{repo_id}/
+**PUT** <http://192.168.1.113:8000/api/v2.1/groups/{group_id}/group-owned-libraries/{repo_id}/>
 
 **Request parameters**
 
@@ -367,12 +390,14 @@ curl -X DELETE -d "group_id=71" -H 'Authorization: Token 5eba8c2f983404e33b140b1
 
 ```
 curl -X PUT -d "path=/tmp/&permission=r" -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' "http://192.168.1.113:8000/api/v2.1/groups/53/group-owned-libraries/9bc59af9-265e-4110-a0e2-619450a5cb35/"
+
 ```
 
 **sample response**
 
 ```
 {"success":true}
+
 ```
 
 **Errors**
@@ -381,3 +406,5 @@ curl -X PUT -d "path=/tmp/&permission=r" -H 'Authorization: Token f2210dacd9c6cc
 * 403 Permission denied.
 * 404 Group/Library/Folder not found.
 * 500 Internal Server Error
+
+
