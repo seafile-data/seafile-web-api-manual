@@ -127,7 +127,7 @@ curl -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Acce
 * `repo_id`
 * `permission`, `r` or `rw`.
 * `username`
-* `path`
+* `path`, folder path in library, if passed, will share this folder to user.
 
 **Sample request**
 
@@ -205,11 +205,12 @@ curl -X PUT -d "permission=rw&username=1@1.com" -H 'Authorization: Token 5eba8c2
 
 * `repo_id`
 * `username`
+* `path`, folder path in library, if passed, will delete folder user share.
 
 **Sample request**
 
 ```
-curl -X DELETE -d "username=1@1.com" -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Accept: application/json; charset=utf-8; indent=4' "http://192.168.1.113:8000/api/v2.1/group-owned-libraries/4902dcc7-29be-4020-81e9-4e512f97db1e/user-share/"
+curl -X DELETE -d "username=1@1.com&path=/123" -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Accept: application/json; charset=utf-8; indent=4' "http://192.168.1.113:8000/api/v2.1/group-owned-libraries/4902dcc7-29be-4020-81e9-4e512f97db1e/user-share/"
 
 ```
 
@@ -274,7 +275,7 @@ curl -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Acce
 * `repo_id`
 * `permission`, `r` or `rw`.
 * `group_id`
-* `path`
+* `path`, folder path in library, if passed, will share this folder to group.
 
 **Sample request**
 
@@ -353,11 +354,12 @@ curl -X PUT -d "permission=rw&group_id=70" -H 'Authorization: Token 5eba8c2f9834
 
 * `repo_id`
 * `group_id`
+* `path`, folder path in library, if passed, will delete folder group share.
 
 **Sample request**
 
 ```
-curl -X DELETE -d "group_id=71" -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Accept: application/json; charset=utf-8; indent=4' "http://192.168.1.113:8000/api/v2.1/group-owned-libraries/4902dcc7-29be-4020-81e9-4e512f97db1e/group-share/"
+curl -X DELETE -d "group_id=71&path=/123" -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Accept: application/json; charset=utf-8; indent=4' "http://192.168.1.113:8000/api/v2.1/group-owned-libraries/4902dcc7-29be-4020-81e9-4e512f97db1e/group-share/"
 
 ```
 

@@ -1,19 +1,80 @@
 # Share Links
 
+## Get all Share Links
+
+**GET** [https://cloud.seafile.com/api/v2.1/admin/share-links/](https://cloud.seafile.com/api/v2.1/admin/share-links/{token}/)
+
+**Request parameters**
+
+**Sample request**
+
+```
+curl -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/share-links/"
+
+```
+
+**Sample response**
+
+```
+{
+    "share_link_list": [
+        {
+            "obj_name": "linux\u5ba2\u6237\u7aef\u6d4b\u8bd5.md",
+            "token": "2fdbc87ad3f14010b129",
+            "creator_email": "xiangyue.cai@seafile.com",
+            "creator_name": "\u8521\u76f8\u8dc3",
+            "ctime": "2020-06-02T13:53:27+08:00",
+            "view_cnt": 5,
+            "expire_date": "",
+            "is_expired": false
+        },
+        {
+            "obj_name": "\u5ba2\u6237\u7aef",
+            "token": "494aee0eabe942768ce6",
+            "creator_email": "jie.zheng@seafile.com",
+            "creator_name": "\u90d1\u6770",
+            "ctime": "2020-06-01T18:42:22+08:00",
+            "view_cnt": 2,
+            "expire_date": "",
+            "is_expired": false
+        },
+        {
+            "obj_name": "\u65e5\u5fd7",
+            "token": "c14e98cae1c24c96810a",
+            "creator_email": "xuepan.sun@seafile.com",
+            "creator_name": "\u5b59\u5b66\u6500",
+            "ctime": "2019-11-28T09:44:34+08:00",
+            "view_cnt": 0,
+            "expire_date": "",
+            "is_expired": false
+        }
+    ],
+    "count": 3
+}
+
+```
+
+**Errors**
+
+* 403 Permission denied.
+
 ## Get Shared File/Dir Info
 
-**GET** https://cloud.seafile.com/api/v2.1/admin/share-links/{token}/
+**GET** <https://cloud.seafile.com/api/v2.1/admin/share-links/{token}/>
 
 **Request parameters**
 
 * token
 
 **Sample request**
+
 ```
 curl -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/share-links/db62f56baf1b4460996e/"
+
 ```
 
 **Sample response**
+
 ```
 {
     "repo_id": "0a5647c8-7708-445a-bd80-49f04b85b153",
@@ -35,6 +96,7 @@ curl -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Acce
     "is_expired": false,
     "repo_name": "sadfdaa"
 }
+
 ```
 
 **Errors**
@@ -42,9 +104,38 @@ curl -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Acce
 * 403 Permission denied.
 * 404 Share link not found.
 
-## List Items in Folder Shared Links 
+## Delete Share Link
 
-**GET** https://cloud.seafile.com/api/v2.1/admin/share-links/{token}/dirents/
+DELETE <https://cloud.seafile.com/api/v2.1/admin/share-links/{token}/>
+
+**Request parameters**
+
+* token
+
+**Sample request**
+
+```
+curl -X DELETE -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/share-links/db62f56baf1b4460996e/"
+
+```
+
+**Sample response**
+
+```
+{
+    "success": true,
+}
+
+```
+
+**Errors**
+
+* 403 Permission denied.
+* 404 Share link not found.
+
+## List Items in Folder Shared Links
+
+**GET** <https://cloud.seafile.com/api/v2.1/admin/share-links/{token}/dirents/>
 
 **Request parameters**
 
@@ -52,11 +143,14 @@ curl -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Acce
 * path, sub-folder of shared dir, default is `/`.
 
 **Sample request**
+
 ```
 curl -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/share-links/db62f56baf1b4460996e/dirents/?path=/sdf"
+
 ```
 
 **Sample response**
+
 ```
 [
     {
@@ -81,6 +175,7 @@ curl -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Acce
         "obj_name": "slack-desktop-2.3.3-amd64.deb"
     }
 ]
+
 ```
 
 **Errors**
@@ -90,7 +185,7 @@ curl -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Acce
 
 ## Download File/Dir
 
-**GET** https://cloud.seafile.com/api/v2.1/admin/share-links/{token}/download/
+**GET** <https://cloud.seafile.com/api/v2.1/admin/share-links/{token}/download/>
 
 **Request parameters**
 
@@ -99,41 +194,53 @@ curl -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Acce
 * path, only used for download (sub) file/folder of shared dir.
 
 **Sample request for download (sub) folder in shared dir**
+
 ```
 curl -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/share-links/db62f56baf1b4460996e/download/?path=/sdf&type=folder"
+
 ```
 
 **Sample response for download (sub) folder in shared dir**
+
 ```
 {
     "download_link": "http://192.168.1.124:8082/zip/395e0ea8-3936-4084-b650-64a93d8a313d"
 }
+
 ```
 
 After you get the download link for the (sub) folder, you should use the token in the download link (here's `395e0ea8-3936-4084-b650-64a93d8a313d`) to check if the background compression packaging has been completed by [Query Task Progress](#download-directory-query-task-progress), once it is finished, you can use the download link to download the (sub) folder.
 
 **Sample request for download (sub) file in shared dir**
+
 ```
 curl -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/share-links/db62f56baf1b4460996e/download/?path=/sdf/12.docx&type=file"
+
 ```
 
 **Sample response for download (sub) file in shared dir**
+
 ```
 {
     "download_link": "http://192.168.1.124:8082/files/2fec8ae7-ffd5-4586-b125-7234e7a69656/12.docx"
 }
+
 ```
 
 **Sample request for download shared file**
+
 ```
 curl -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/share-links/dac219add64f4a4b9c51/download/"
+
 ```
 
 **Sample response for download shared file**
+
 ```
 {
     "download_link": "http://192.168.1.124:8082/files/a34af6cb-4762-4eea-b5a4-0b924e6767d0/excel-view.xlsx"
 }
+
 ```
 
 **Errors**
@@ -147,7 +254,7 @@ curl -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Acce
 
 ## Check Password
 
-**GET** https://cloud.seafile.com/api/v2.1/admin/share-links/{token}/check-password/
+**GET** <https://cloud.seafile.com/api/v2.1/admin/share-links/{token}/check-password/>
 
 **Request parameters**
 
@@ -155,15 +262,19 @@ curl -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Acce
 * password
 
 **Sample request**
+
 ```
 curl -d 'password=11111111' -H 'Authorization: Token cbd7705c06846425ed5c46ae0313d5b098d24154' -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/share-links/db62f56baf1b4460996e/check-password/"
+
 ```
 
 **Sample response**
+
 ```
 {
     "success": true
 }
+
 ```
 
 **Errors**
@@ -173,3 +284,5 @@ curl -d 'password=11111111' -H 'Authorization: Token cbd7705c06846425ed5c46ae031
 * 403 Permission denied.
 * 403 Password is not correct.
 * 404 Share link not found.
+
+
