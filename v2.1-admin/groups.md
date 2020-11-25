@@ -104,7 +104,7 @@ curl -H "Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd" -H 'Acce
 **Sample request**
 
 ```
-curl -X PUT -d "group_name=123&owner=q1@q1.com" -H "Authorization: Token 4c3fa38f9f2fee40485446afdee7a23749cb6911" -H 'Accept: application/json; charset=utf-8; indent=4' https://cloud.seafile.com/api/v2.1/admin/groups/
+curl -X POST -d "group_name=123&group_owner=q1@q1.com" -H "Authorization: Token 4c3fa38f9f2fee40485446afdee7a23749cb6911" -H 'Accept: application/json; charset=utf-8; indent=4' https://cloud.seafile.com/api/v2.1/admin/groups/
 
 ```
 
