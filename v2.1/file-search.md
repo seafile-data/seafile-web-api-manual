@@ -230,4 +230,43 @@ time_to=15254060581&size_from=100&size_to=105' http://cloud.seafile.com/api2/sea
 * 400 Missing argument q.
 * 400 Parameter invalid.
 
+## Search Files by Name in Library
+
+**GET** http\://cloud.seafile.com/api/v2.1/search-file/?repo_id={repo_id}&q={q}
+
+**Request parameters**
+
+* `q`, keyword for searching.
+* `repo_id`
+
+**Sample request**
+
+```
+curl -H 'Authorization: Token c18e99367207c1895af7456cac0aeb9ee36ce392' -H 'Accept: application/json; charset=utf-8; indent=4'  "http://cloud.seafile.com/api/v2.1/search-file/?repo_id=db599768-eb24-4633-b5a2-44fceacefea2&q=seafile"
+
+```
+
+**Sample response**
+
+```
+{
+    "data": [
+        {
+            "path": "/seafile-tutorial.doc",
+            "size": 300544,
+            "mtime": "2021-01-04T17:48:45+08:00",
+            "type": "file"
+        }
+    ]
+}
+
+```
+
+**Errors**
+
+* 400 repo_id/q invalid.
+* 403 Permission denied.
+* 404 Library not found.
+* 500 Internal Server Error
+
 
