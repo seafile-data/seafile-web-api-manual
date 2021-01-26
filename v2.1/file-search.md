@@ -232,6 +232,8 @@ time_to=15254060581&size_from=100&size_to=105' http://cloud.seafile.com/api2/sea
 
 ## Search Files by Name in Library
 
+Since 8.0 CE
+
 **GET** http\://cloud.seafile.com/api/v2.1/search-file/?repo_id={repo_id}&q={q}
 
 **Request parameters**
