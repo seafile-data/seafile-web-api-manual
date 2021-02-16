@@ -20,7 +20,7 @@ curl  -v  -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' -H 
 **Sample response**
 
 ```
-"https://cloud.seafile.com:8082/files/adee6094/foo.c"
+"https://cloud.seafile.com/files/adee6094/foo.c"
 
 ```
 
@@ -351,12 +351,10 @@ curl -X DELETE -v  -H 'Authorization: Token f2210dacd3606d94ff8e61d99b477fd' -H 
 **Note**
 
    This can also be used to delete directory.
-   
-   
 
 ## Get Smart Link for a File
 
-**GET** "http://192.168.1.113:8000/api/v2.1/smart-link/?repo_id={repo_id}&path={path}&is_dir={is_dir}"
+**GET** "<http://192.168.1.113:8000/api/v2.1/smart-link/?repo_id={repo_id}&path={path}&is_dir={is_dir}>"
 
 **Request parameters**
 
@@ -368,6 +366,7 @@ curl -X DELETE -v  -H 'Authorization: Token f2210dacd3606d94ff8e61d99b477fd' -H 
 
 ```
 curl -H "Authorization: Token 1cb7908b876d9b1708c757a347f2e6346456ab91" -H 'Accept: application/json; indent=4' "http://192.168.1.113:8000/api/v2.1/smart-link/?repo_id=d4f596ed-09ea-4ac6-8d59-12acbd089097&path=/8.md&is_dir=false"
+
 ```
 
 **Sample response**
@@ -376,6 +375,7 @@ curl -H "Authorization: Token 1cb7908b876d9b1708c757a347f2e6346456ab91" -H 'Acce
 {
     "smart_link": "http://192.168.1.113:8000/smart-link/3eb1657f-db82-4329-a05e-9c087022fb2f/8.md"
 }
+
 ```
 
 **Errors**
@@ -385,3 +385,5 @@ curl -H "Authorization: Token 1cb7908b876d9b1708c757a347f2e6346456ab91" -H 'Acce
 * 403 Permission denied.
 * 404 Library/Foldef/File/ not found.
 * 500 Internal Server Error
+
+
