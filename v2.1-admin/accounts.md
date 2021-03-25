@@ -199,6 +199,33 @@ curl -X PUT -d "quota_total=1" -H "Authorization: Token f2d84d433a7d6a255e27f325
 
 ```
 
+## Update User Identity Email
+
+Seafile uses an email as user's unique identification. This email is stored in ccnet database, and should NOT be modified. But in some special cases, you want to change this email, you can use this api.
+
+**PUT** https\://cloud.seafile.com/api/v2.1/admin/update-user-ccnet-email/
+
+**Request parameters**
+
+* old_email
+* new_email
+
+**Sample request**
+
+```
+curl -v -X PUT -d "old_email=1@1.com&new_email=2@2.com" -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/update-user-ccnet-email/"
+
+```
+
+**Sampple response**
+
+**Errors**
+
+* 400 old_email/new_email invalid.
+* 403 only administrator can perform this action
+* 404 user not found.
+* 500 internal server error.
+
 ## Add User
 
 **POST** <https://cloud.seafile.com/api/v2.1/admin/users/>
