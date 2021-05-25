@@ -341,7 +341,7 @@ curl -X DELETE -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd
 
 ```
 
-#### <a id="send-share-link-email"></a>Send Share Link Email
+#### Send Share Link Email
 
 **POST** <https://cloud.seafile.com/api2/send-share-link/>
 
@@ -458,6 +458,34 @@ curl -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' -H 'Acce
 
 * 403 Permission denied.
 * 404 token/library/folder not found.
+* 500 Internal Server Error
+
+## Upload File
+
+**GET** http\://127.0.0.1:8000/api/v2.1/share-links/{token}/upload/﻿
+
+**Request parameters**
+
+* token
+
+**Sample request**
+
+```
+curl -H 'Accept: application/json; indent=4' "http://127.0.0.1:8000/api/v2.1/share-links/a65cbeab439c4178a59e/upload/"
+
+```
+
+**Sample response**
+
+After get upload link, you can upload file to the shared dir, for more info, please see Upload File.
+
+**Errors**
+
+* 400 Share link is not a folder share link.
+* 403 Permission denied.
+* 404 Share link not found.
+* 404 Library not found.
+* 404 Folder not found.
 * 500 Internal Server Error
 
 
