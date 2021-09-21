@@ -296,8 +296,8 @@ curl -X DELETE -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac
 
 **Request parameters**
 
-* op
-* to_user this user must exist
+* op, use op=migrate to migrate an account
+* to_user, the user id you want to migrate the user to, this user must exist
 
 **Sample request**
 
