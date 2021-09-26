@@ -20,11 +20,6 @@ curl -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Acce
 
 ```
 {
-	"available_roles":[
-    	"default",
-        "can_generate_upload_link_false",
-        "guest"
-    ],
     "data": [
         {
             "login_id": "",
@@ -57,10 +52,7 @@ curl -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Acce
             "email": "123@123.com"
         }
     ],
-    "paeg_info": {
-        "current_page": 1,
-        "has_next_page": true
-    }
+    'total_count': 2
 }
 
 ```
