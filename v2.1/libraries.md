@@ -278,7 +278,7 @@ curl -v -d "name=dist&repo_id=7914e90a-c34e-4fe9-9497-4cec4ce708f9&magic=06d3cc7
 
    Response code 200 and newly created library information are returned.
 
-### <a id="delete-library"></a>Delete Library
+### Delete Library
 
 **DELETE** <https://cloud.seafile.com/api2/repos/{repo-id}/>
 
@@ -321,6 +321,8 @@ curl -d "repo_name=new-repo-name"  -H 'Authorization: Token f2210dacd9c6ccb81336
 
 ### Transfer Library
 
+#### Transfer Library to User
+
 **PUT** <https://cloud.seafile.com/api2/repos/{repo-id}/owner/>
 
 **Request parameters**
@@ -339,7 +341,39 @@ curl -v -X PUT -d "owner=new@owner.com" -H 'Authorization: Token f2210dacd9c6ccb
 
 ```
 {
-"success": True
+    "success": True
+}
+
+```
+
+**Errors**
+
+* 440 Email invalid.
+* 403 Permission error(only administrator/repo-owner can perform this action).
+* 404 Library not found.
+* 404 User not found.
+
+#### Transfer Library to Department
+
+**PUT** <https://cloud.seafile.com/api2/repos/{repo-id}/owner/>
+
+**Request parameters**
+
+* repo-id
+* owner, the format should be "`department_id`@seafile_group"
+
+**Sample request**
+
+```
+curl -v -X PUT -d "owner=1@seafile_group" -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d9b477fd' -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api2/repos/dae8cecc-2359-4d33-aa42-01b7846c4b32/owner/
+
+```
+
+**Sample response**
+
+```
+{
+    "success": True
 }
 
 ```
