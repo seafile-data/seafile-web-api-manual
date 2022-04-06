@@ -190,7 +190,7 @@ curl -H "Authorization: Token 8cc0e7085a24b6abfee721e758b6aab4a90e7321" -H 'Acce
 
 ### Create Library
 
-**POST** <https://cloud.seafile.com/api/v2.1/repos/>
+**POST** [https://cloud.seafile.com/api2/repos/](https://cloud.seafile.com/api/v2.1/repos/)
 
 **Request parameters**
 
@@ -830,5 +830,7 @@ curl -H 'Authorization:Token 825d6877dc3474d952b1f5b0654aeaeb90c48281' -H 'Accep
 * 404 Library not found.
 * 404 Commit not found.
 * 403 Permission denied.
+
+<https://cloud.seafile.com/api2/repos/>
 
 
