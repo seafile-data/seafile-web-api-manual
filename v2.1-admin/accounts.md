@@ -59,16 +59,18 @@ curl -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Acce
 
 ## Search User
 
-**GET** [https://cloud.seafile.com/api/v2.1/admin/search-user/](https://cloud.seafile.com/api/v2.1/admin/users/)
+**GET** [https://cloud.seafile.com/api/v2.1/admin/search-user/?query={}&page={}&per_page=](https://cloud.seafile.com/api/v2.1/admin/users/){}
 
 **Request parameters**
 
 * query
+* page
+* per_page
 
 **Sample request**
 
 ```
-curl -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/search-user/?query=lian"
+curl -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/search-user/?query=lian&page=1&per_page=25"
 
 ```
 
@@ -105,7 +107,8 @@ curl -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Acce
             "role": "default",
             "institution": ""
         }
-    ]
+    ],
+    "page_info":{"has_next_page":false,"current_page":1}
 }
 
 ```
@@ -453,5 +456,7 @@ curl -v -X DELETE -H "Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b47
 **Errors**
 
 * 403 Permission error, only administrator can perform this action
+
+[https://cloud.seafile.com/api/v2.1/admin/search-user/?query={}&page={}&per_page={}](https://cloud.seafile.com/api/v2.1/admin/users/)
 
 
