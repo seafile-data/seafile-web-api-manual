@@ -194,27 +194,42 @@ curl -H "Authorization: Token 8cc0e7085a24b6abfee721e758b6aab4a90e7321" -H 'Acce
 
 **Request parameters**
 
-* repo_name: name of library
+* name: name of library
 * passwd: needed by encrypted library
 * storage_id: when multiple storage backends enabled, use this identifier for storage object.
 
 **Sample request**
 
 ```
-curl -v -d "repo_name=new_repo" -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/repos/
+curl -v -d "name=new_repo" -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api2/repos/
 
 ```
 
 **Sample response**
 
 ```
+
 {
-    "repo_size": 0,
-    "repo_id": "9d8ae7b1-dbe7-4783-ac5a-6e0aca26bc77",
-    "encrypted": false,
-    "mtime": 1565339214,
+    "relay_id": "44e8f253849ad910dc142247227c8ece8ec0f971",
+    "relay_addr": "127.0.0.1",
+    "relay_port": "80",
     "email": "foo@foo.com",
-    "repo_name": "new_repo"
+    "token": "b9a617d4bcbbbe94b8d673021ee61730125f560a",
+    "repo_id": "94b0a04d-19db-4558-9c3d-af61debdef70",
+    "repo_name": "new_repo",
+    "repo_desc": "",
+    "repo_size": 0,
+    "repo_size_formatted": "0\u00a0bytes",
+    "mtime": 1676964296,
+    "mtime_relative": "<time datetime=\"2023-02-21T15:24:56\" is=\"relative-time\" title=\"Tue, 21 Feb 2023 15:24:56 +0800\" >Just now</time>",
+    "encrypted": "",
+    "enc_version": 0,
+    "salt": "",
+    "magic": "",
+    "random_key": "",
+    "repo_version": 1,
+    "head_commit_id": "e30e8739272a93a687e9a9a94adbf3d26247ba84",
+    "permission": "rw"
 }
 
 ```
