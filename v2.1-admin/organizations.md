@@ -112,21 +112,18 @@ curl -H 'Authorization: Token 5eba8c2f983404e33b140b13a1d050b9a4440e03' -H 'Acce
 
 ## Add Organization
 
-**POST** <https://cloud.seafile.com/api2/organization/>
+**POST** <https://cloud.seafile.com/api/v2.1/admin/organizations/>
 
 **Request parameters**
 
-* username
-* password
 * org_name
-* prefix
-* quota
-* member_limit
+* owner_email
+* owner_password
 
 **Sample request**
 
 ```
-curl -v -X POST -d "username=example@example.com&password=example&org_name=example&prefix=example&quota=100&member_limit=10" -H "Authorization: Token ccdff90e4d1efe76b2b3d91c06b027a5cff189d4" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api2/organization/
+curl -v -X POST -d "owner_email=example@example.com&owner_password=example&org_name=example" -H "Authorization: Token ccdff90e4d1efe76b2b3d91c06b027a5cff189d4" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api/v2.1/admin/organizations/
 
 ```
 
@@ -134,26 +131,30 @@ curl -v -X POST -d "username=example@example.com&password=example&org_name=examp
 
 ```
 {
+    "org_id": 1,
     "org_name": "example",
-    "ctime": "2019-05-23T08:30:03+00:00",
-    "creator_name": "example",
+    "ctime": "2023-05-24T02:26:48+00:00",
+    "org_url_prefix": "org_9i7cbuvizypk0hfywo2z",
+    "role": "default",
     "creator_email": "example@example.com",
-    "org_id": 2,
+    "creator_name": "example",
     "creator_contact_email": "example@example.com",
-    "org_url_prefix": "example"
+    "quota": -2,
+    "quota_usage": 0
 }
 
 ```
 
 **Errors**
 
-* 400 Missing argument
-* 400 Email is not valid
-* 400 Quota is not valid
-* 400 URL prefix can only be letters(a-z), numbers, and the underscore character
-* 400 A user with this email already exists
-* 400 An organization with this prefix already exists
+* 400 org_name invalid.
+* 400 email invalid.
+* 400 owner_password invalid.
+* 400 User already exists.
 * 403 Feature is not enabled.
+* 403 Permission denied.
+* 500 Failed to create organization, please try again later.
+* 500 Internal Server Error
 
 ## Get Organization Info
 
