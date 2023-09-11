@@ -1,5 +1,7 @@
 # File Upload
 
+**NOTE**: If you want to upload/update file in an encrypted library, you should decrypt the library (<https://download.seafile.com/published/web-api/v2.1/library-encryption.md#user-content-Decrypt%20Library>) first.
+
 ## Upload File
 
 ### Get Upload Link
@@ -393,5 +395,9 @@ The id of the updated file
 500 Internal server error
 
 ```
+
+[decrypt the library](https://download.seafile.com/published/web-api/v2.1/library-encryption.md#user-content-Decrypt%20Library)
+
+[decrypt the library](https://download.seafile.com/published/web-api/v2.1/library-encryption.md)
 
 
