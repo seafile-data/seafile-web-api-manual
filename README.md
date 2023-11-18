@@ -11,7 +11,6 @@ curl -H 'Authorization: Token 24fd3c026886e3121b2ca630805ed425c272cb96' https://
 
 The api key can be retrieved by the obtain auth api. See `Quick Start` below.
 
-For each API, we provide `curl` examples to illustrate the usage. We also provide `python` and `javascript` examples, please refer to <https://github.com/haiwen/webapi-examples> for details.
 
 ## Status Code
 
@@ -81,3 +80,5 @@ See [v2.1 User APIs](v2.1)
 ## Admin APIs
 
 See [v2.1 Admin APIs](v2.1-admin)
+
+
