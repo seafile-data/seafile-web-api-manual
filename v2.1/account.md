@@ -16,7 +16,7 @@ curl -H "Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd" -H 'Acce
 ```
 {
     "login_id": "",
-    "is_staff": true,
+    "is_staff": false,
     "name": "foo",
     "email_notification_interval": 0,
     "institution": "",
