@@ -156,29 +156,37 @@ curl -v -d "operation=rename&newname=newfoo.c" -H 'Authorization: Token f2210dac
 
 ## Lock File
 
-**PUT** <https://cloud.seafile.com/api2/repos/{repo-id}/file/>
+**PUT** <https://cloud.seafile.com/api/v2.1/repos/{repo-id}/file/?p={path}>
 
 **Request parameters**
 
 * repo-id
 * p
 * operation
+* expire, `-1` stands for no expiration.
 
 **Sample request**
 
 ```
-curl -v -X PUT -d "operation=lock&p=/foo.c" -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' -H 'Accept: application/json; charset=utf-8; indent=4' https://cloud.seafile.com/api2/repos/dae8cecc-2359-4d33-aa42-01b7846c4b32/file/
+curl -v -X PUT -d "operation=lock" -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' -H 'Accept: application/json; charset=utf-8; indent=4' https://cloud.seafile.com/api/v2.1/repos/dae8cecc-2359-4d33-aa42-01b7846c4b32/file/?p=/foo.c
 
 ```
 
 **Sample response**
 
 ```
-...
-< HTTP/1.0 200 OK
-...
-"success"
-
+{
+    "type": "file",
+    "repo_id": "dae8cecc-2359-4d33-aa42-01b7846c4b32",
+    "parent_dir": "/",
+    "obj_name": "foo.c",
+    "obj_id": "0000000000000000000000000000000000000000",
+    "size": 0,
+    "mtime": "2023-12-11T10:12:38+08:00",
+    "is_locked": true,
+    "can_preview": true,
+    "can_edit": false
+}
 ```
 
 **Success**
@@ -194,7 +202,7 @@ curl -v -X PUT -d "operation=lock&p=/foo.c" -H 'Authorization: Token f2210dacd9c
 
 ## Unlock File
 
-**PUT** <https://cloud.seafile.com/api2/repos/{repo-id}/file/>
+**PUT** <https://cloud.seafile.com/api/v2.1/repos/{repo-id}/file/?p={path}>
 
 **Request parameters**
 
@@ -205,18 +213,25 @@ curl -v -X PUT -d "operation=lock&p=/foo.c" -H 'Authorization: Token f2210dacd9c
 **Sample request**
 
 ```
-curl -v -X PUT -d "operation=unlock&p=/foo.c" -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' -H 'Accept: application/json; charset=utf-8; indent=4' https://cloud.seafile.com/api2/repos/dae8cecc-2359-4d33-aa42-01b7846c4b32/file/
+curl -v -X PUT -d "operation=unlock" -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' -H 'Accept: application/json; charset=utf-8; indent=4' https://cloud.seafile.com/api/v2.1/repos/dae8cecc-2359-4d33-aa42-01b7846c4b32/file/?p=/foo.c
 
 ```
 
 **Sample response**
 
 ```
-...
-< HTTP/1.0 200 OK
-...
-"success"
-
+{
+    "type": "file",
+    "repo_id": "dae8cecc-2359-4d33-aa42-01b7846c4b32",
+    "parent_dir": "/",
+    "obj_name": "foo.c",
+    "obj_id": "0000000000000000000000000000000000000000",
+    "size": 0,
+    "mtime": "2023-12-11T10:12:38+08:00",
+    "is_locked": false,
+    "can_preview": true,
+    "can_edit": false
+}
 ```
 
 **Success**
