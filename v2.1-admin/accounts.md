@@ -7,13 +7,13 @@
 **Request parameters**
 
 * page: current page.
-* per_page
+
+* per\_page
 
 **Sample request**
 
 ```
 curl -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/users/?page=1&per_page=2"
-
 ```
 
 **Sample response**
@@ -54,24 +54,24 @@ curl -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Acce
     ],
     'total_count': 2
 }
-
 ```
 
 ## Search User
 
-**GET** [https://cloud.seafile.com/api/v2.1/admin/search-user/?query={}&page={}&per_page=](https://cloud.seafile.com/api/v2.1/admin/users/){}
+**GET** [https://cloud.seafile.com/api/v2.1/admin/search-user/?query={}\&page={}\&per\_page=](https://cloud.seafile.com/api/v2.1/admin/users/){}
 
 **Request parameters**
 
 * query
+
 * page
-* per_page
+
+* per\_page
 
 **Sample request**
 
 ```
 curl -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/search-user/?query=lian&page=1&per_page=25"
-
 ```
 
 **Sample response**
@@ -110,7 +110,6 @@ curl -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Acce
     ],
     "page_info":{"has_next_page":false,"current_page":1}
 }
-
 ```
 
 ## Get a User's Info
@@ -121,7 +120,6 @@ curl -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Acce
 
 ```
 curl -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/users/foo@foo.com"
-
 ```
 
 **Sample response**
@@ -144,7 +142,6 @@ curl -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Acce
     "role": "default",
     "email": "foo@foo.com"
 }
-
 ```
 
 ## Update User Info
@@ -154,24 +151,32 @@ curl -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Acce
 **Request parameters**
 
 * password
-* is_staff, true or false
-* is_active, true or false
-* role	
+
+* is\_staff, true or false
+
+* is\_active, true or false
+
+* role
+
 * name
-* login_id
-* contact_email
-* reference_id
+
+* login\_id
+
+* contact\_email
+
+* reference\_id
+
 * department
-* quota_total, unit is MB
+
+* quota\_total, unit is MB
 
 **Sample request**
 
 ```
 curl -X PUT -d "quota_total=1" -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/users/foo@foo.com/"
-
 ```
 
-**Sampple response**
+**Sample response**
 
 ```
 {
@@ -191,34 +196,36 @@ curl -X PUT -d "quota_total=1" -H "Authorization: Token f2d84d433a7d6a255e27f325
     "has_default_device": true,
     "is_force_2fa": true,
 }
-
 ```
 
 ## Update User Identity Email
 
 Seafile uses an email as user's unique identification. This email is stored in ccnet database, and should NOT be modified. But in some special cases, you want to change this email, you can use this api.
 
-**PUT** https\://cloud.seafile.com/api/v2.1/admin/update-user-ccnet-email/
+**PUT** <https://cloud.seafile.com/api/v2.1/admin/update-user-ccnet-email/>
 
 **Request parameters**
 
-* old_email
-* new_email
+* old\_email
+
+* new\_email
 
 **Sample request**
 
 ```
 curl -v -X PUT -d "old_email=1@1.com&new_email=2@2.com" -H 'Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd' -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/update-user-ccnet-email/"
-
 ```
 
 **Sampple response**
 
 **Errors**
 
-* 400 old_email/new_email invalid.
+* 400 old\_email/new\_email invalid.
+
 * 403 only administrator can perform this action
+
 * 404 user not found.
+
 * 500 internal server error.
 
 ## Add User
@@ -228,22 +235,31 @@ curl -v -X PUT -d "old_email=1@1.com&new_email=2@2.com" -H 'Authorization: Token
 **Request parameters**
 
 * email, required.
+
 * password
-* is_staff, true or false
-* is_active, true or false
+
+* is\_staff, true or false
+
+* is\_active, true or false
+
 * role
+
 * name
-* login_id
-* contact_email
-* reference_id
+
+* login\_id
+
+* contact\_email
+
+* reference\_id
+
 * department
-* quota_total, unit is MB
+
+* quota\_total, unit is MB
 
 **Sample request**
 
 ```
 curl -X POST -d "email=aaabbb@aaabbb.com&password=aaabbb" -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/users/"
-
 ```
 
 **Sample response**
@@ -264,7 +280,6 @@ curl -X POST -d "email=aaabbb@aaabbb.com&password=aaabbb" -H "Authorization: Tok
     "role": "",
     "email": "aaabbb@aaabbb.com"
 }
-
 ```
 
 ## Delete User
@@ -275,14 +290,12 @@ curl -X POST -d "email=aaabbb@aaabbb.com&password=aaabbb" -H "Authorization: Tok
 
 ```
 curl -X DELETE -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac" -H 'Accept: application/json; charset=utf-8; indent=4' "https://cloud.seafile.com/api/v2.1/admin/users/foo@foo.com/"
-
 ```
 
 **Sample response**
 
 ```
 {success: true}
-
 ```
 
 ## Migrate Account
@@ -292,13 +305,13 @@ curl -X DELETE -H "Authorization: Token f2d84d433a7d6a255e27f325c1050df48e8c26ac
 **Request parameters**
 
 * op, use op=migrate to migrate an account
-* to_user, the user id you want to migrate the user to, this user must exist
+
+* to\_user, the user id you want to migrate the user to, this user must exist
 
 **Sample request**
 
 ```
 curl -v -d "op=migrate&to_user=user2@mail.com" -H "Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api2/accounts/user@mail.com/
-
 ```
 
 **Sample response**
@@ -307,21 +320,19 @@ curl -v -d "op=migrate&to_user=user2@mail.com" -H "Authorization: Token f2210dac
 ...
 < HTTP/1.0 200 OK
 ...
-
 "success"
-
 ```
 
 **Success**
 
 ```
 Response code 200(OK) is returned.
-
 ```
 
 **Errors**
 
 * 400 Bad Request, arguments are missing or invalid
+
 * 403 Permission error, only administrator can perform this action
 
 ## List Accounts(Deprecated)
@@ -331,7 +342,9 @@ Response code 200(OK) is returned.
 **Request parameters**
 
 * start (default to 0)
+
 * limit (default to 100)
+
 * scope (default None, accepted values: 'LDAP' or 'DB' or 'LDAPImport')
 
 To retrieve all users, just set both `start` and `limit` to `-1`.
@@ -342,7 +355,6 @@ If scope parameter is passed then accounts will be searched inside the specific 
 
 ```
 curl -H "Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api2/accounts/
-
 ```
 
 **Sample response**
@@ -356,7 +368,6 @@ curl -H "Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd" -H 'Acce
     "email": "bar@bar.com"
 }
 ]
-
 ```
 
 **Errors**
@@ -373,7 +384,6 @@ curl -H "Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd" -H 'Acce
 
 ```
 curl -v -H "Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api2/accounts/user@mail.com/
-
 ```
 
 **Sample response**
@@ -388,7 +398,6 @@ curl -v -H "Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd" -H 'A
 "total": 107374182400,
 "email": "user@mail.com"
 }
-
 ```
 
 **Errors**
@@ -402,14 +411,15 @@ curl -v -H "Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd" -H 'A
 **Request parameters**
 
 * password
-* is_staff (defaults to False)
-* is_active (defaults to True)
+
+* is\_staff (defaults to False)
+
+* is\_active (defaults to True)
 
 **Sample request**
 
 ```
 curl -v -X PUT -d "password=123456" -H "Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api2/accounts/newaccount@gmail.com/
-
 ```
 
 **Sample response**
@@ -419,16 +429,13 @@ curl -v -X PUT -d "password=123456" -H "Authorization: Token f2210dacd9c6ccb8133
 < HTTP/1.0 201 CREATED
 < Location: https://cloud.seafile.com/api2/accounts/newaccount@gmail.com/
 ...
-
 "success"
-
 ```
 
 **Success**
 
 ```
 Response code 201(Created) is returned and the Location header provides shared link.
-
 ```
 
 **Errors**
@@ -443,20 +450,16 @@ Response code 201(Created) is returned and the Location header provides shared l
 
 ```
 curl -v -X DELETE -H "Authorization: Token f2210dacd9c6ccb8133606d94ff8e61d99b477fd" -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api2/accounts/newaccount@gmail.com/
-
 ```
 
 **Sample response**
 
 ```
 "success"
-
 ```
 
 **Errors**
 
 * 403 Permission error, only administrator can perform this action
 
-[https://cloud.seafile.com/api/v2.1/admin/search-user/?query={}&page={}&per_page={}](https://cloud.seafile.com/api/v2.1/admin/users/)
-
-
+[https://cloud.seafile.com/api/v2.1/admin/search-user/?query={}\&page={}\&per\_page={}](https://cloud.seafile.com/api/v2.1/admin/users/)
